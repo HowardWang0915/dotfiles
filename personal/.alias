@@ -1,0 +1,23 @@
+# Basic 
+alias c='clear'
+alias mv='mv -v'
+alias cp="cp -v"
+alias mkdir="mkdir -v"
+# BAT
+alias cat='bat'
+# LSD
+alias ls='lsd --group-dirs first'
+alias l='ls -l --group-dirs first'
+alias la='ls -a --group-dirs first'
+alias lla='ls -la --group-dirs first'
+alias lt='ls --tree'
+# SOURCE
+alias s='source ~/.zshrc'
+# FZF
+# Find a package with pacman
+function software { pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S; }
+function remove { pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns; }
+alias wifi="./scripts/wifi-fzf"
+# List all packages in the computer and remove it 
+# tmux 
+alias tmux='tmux -f ~/.config/tmux/.tmux.conf'

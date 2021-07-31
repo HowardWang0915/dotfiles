@@ -1,0 +1,329 @@
+[colors]
+background = #282828
+; gruvbox white
+foreground = #ebdbb2    
+; dark fonts
+foreground1 = #000000   
+red        = #fb4934
+green      = #b8bb26
+yellow     = #fabd2f
+blue       = #83a598
+purple     = #d3869b
+teal       = #8ec07c
+orange     = #fe8019
+gray       = #a89984
+trans      = #aa282828
+
+[bar/top]
+; Size
+width  = 100%
+height = 20
+
+;enable ipc support
+enable-ipc = true
+
+; Offset
+;offset-x = 50%
+;offset-y = 50%
+
+; Position
+bottom = false
+
+; Radius
+radius = 0
+
+; Align modules fixed to middle
+fixed-center = true
+
+; Colors
+; background = ${colors.trans}
+background = ${colors.background}
+foreground = ${colors.foreground}
+; foreground = ${colors.trans}
+
+; Underline
+line-size  = 2
+line-color = ${colors.foreground}
+
+; Border
+border-size  = 0
+border-color = ${colors.background}
+; border-color = ${colors.trans}
+
+; Padding
+padding-left  = 0
+padding-right = 0
+
+; Margin of modules
+module-margin-left  = 0
+module-margin-right = 0
+
+; Font
+font-0 = Iosevka:size=9;2
+font-1 = Font Awesome 5 Free Solid:size=10;2
+
+;separator 
+; separator = "|"
+
+; Modlues placement
+; modules-left   = poweroff logout lock i3
+modules-left   = poweroff i3
+modules-center = time date
+modules-right  = memory battery temperature pulseaudio wireless-network bluetooth aur-updates
+
+; Cursor actions
+cursor-click  = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+
+; Mouse click
+enable-click = true
+
+; Mouse scroll
+enable-scroll = false
+
+; Sort
+index-sort = true
+
+; Display icons
+fuzzy-match = true
+
+; Icons
+ws-icon-0       = Main;
+ws-icon-1       = Terminal;
+ws-icon-2       = Web;
+ws-icon-3       = Program;
+ws-icon-4       = Design;
+ws-icon-default = 
+
+; Focused label
+label-focused            = %icon% %name%
+label-focused-background = ${colors.green}
+label-focused-foreground = ${colors.foreground1}
+label-focused-padding    = 2
+
+; Unfocused labels
+label-unfocused            = %icon% %name%
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-padding    = 2
+
+; Visible labels
+label-visible            = %icon% %name%
+label-visible-foreground = ${colors.foreground}
+label-visible-padding    = 2
+
+; Urgent labels
+label-urgent            = %icon% %name%
+label-urgent-foreground = ${colors.red}
+label-urgent-padding    = 2
+
+[module/wireless-network]
+type = internal/network 
+interface = wls1
+interval = 5 
+; format-connected = <ramp-signal><label-connected>
+format-connected = <label-connected>
+label-connected-foreground = ${colors.foreground1}
+format-connected-background = ${colors.yellow}
+format-connected-padding = 2
+
+format-disconnected = <label-disconnected>
+label-disconnected-foreground = ${colors.foreground1}
+; format-disconnected-prefix = 😱
+format-disconnected-background = ${colors.red}
+format-disconnected-padding = 2
+
+; label-connected = %essid% %downspeed:9%
+label-connected = %{A1:~/.config/rofi/wifi/rofi-wifi-menu-plus-plus/rofi_wifi_menu:} %downspeed:5%%{A}
+label-disconnected = %{A1:~/.config/rofi/wifi/rofi-wifi-menu-plus-plus/rofi_wifi_menu:}😱  %{A}
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+
+[module/memory]
+type = internal/memory
+; Seconds to sleep between updates
+; Default: 1
+interval = 5
+format = <label> 
+label =  %gb_used%
+label-foreground = ${colors.foreground1}
+label-background = ${colors.gray}
+label-padding = 2
+
+[module/bluetooth]
+type = custom/script 
+exec = ~/.config/rofi/bluetooth/rofi-bluetooth/rofi-bluetooth --status
+interval = 5
+click-left = ~/.config/rofi/bluetooth/rofi-bluetooth/rofi-bluetooth & 
+; label = 
+label = %output%
+format-foreground = ${colors.foreground1}
+format-background = ${colors.green}
+format-padding = 1
+
+[module/aur-updates]
+type = custom/script
+exec = checkupdates | wc -l 
+interval = 3600
+label =  %output%
+
+format-foreground = ${colors.foreground1}
+format-background = ${colors.orange}
+format-padding = 1
+
+[module/weather]
+type = custom/script
+
+; Script
+exec = /home/howard/.config/polybar/scripts/weather.sh
+
+; Update interval
+interval = 600
+
+; Label
+label            = %output%
+label-foreground = ${colors.foreground}
+label-padding    = 1
+
+[module/time]
+type = internal/date
+
+; Update interval
+interval = 1.0
+
+; Format
+time = %I:%M%P
+
+; Label
+label            =  %time%
+label-foreground = ${colors.foreground}
+label-padding    = 1
+
+[module/date]
+type = internal/date
+
+; Update interval
+interval = 1.0
+
+; Format
+date = %A, %d %B
+
+; Label
+label            =  %date%
+label-foreground = ${colors.foreground}
+label-padding    = 1
+
+[module/battery]
+type = internal/battery
+
+; Full battery level
+full-at = 99
+
+; Battery and adapter
+battery = BAT0
+adapter = AC0
+
+; Charging label
+label-charging            =  %percentage%%
+label-charging-background = ${colors.teal}
+label-charging-foreground = ${colors.foreground1}
+label-charging-padding    = 2
+
+; Discharging label
+label-discharging            =  %percentage%%
+label-discharging-background = ${colors.red}
+label-discharging-foreground = ${colors.foreground1}
+label-discharging-padding    = 2
+
+; Full label
+label-full            =  100%
+label-full-background = ${colors.teal}
+label-full-foreground = ${colors.foreground1}
+label-full-padding    = 2
+
+[module/temperature]
+type = internal/temperature
+
+; Label
+label            =  %temperature%
+label-background = ${colors.purple}
+label-foreground = ${colors.foreground1}
+label-padding    = 2
+
+; Warning label
+label-warn            =  %temperature%
+label-warn-background = ${colors.red}
+label-warn-foreground = ${colors.foreground1}
+label-warn-padding    = 2
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Volume label
+label-volume            =  %percentage%%
+label-volume-background = ${colors.blue}
+label-volume-foreground = ${colors.foreground1}
+label-volume-padding    = 2
+
+; Muted label
+label-muted            =  Muted
+label-muted-background = ${colors.red}
+label-muted-foreground = ${colors.foreground1}
+label-muted-padding    = 2
+
+[module/lock]
+type = custom/text
+
+; Label
+content = 
+content-background = ${colors.yellow}
+content-foreground = ${colors.foreground}
+content-padding    = 2
+
+; Mouse click
+click-left = slock
+
+[module/logout]
+type = custom/text
+
+; Label
+content            = 
+content-background = ${colors.green}
+content-foreground = ${colors.foreground}
+content-padding    = 2
+
+; Mouse click
+click-left = i3-msg exit
+
+[module/poweroff]
+type = custom/text
+
+; Label
+content            = 
+content-background = ${colors.red}
+content-foreground = ${colors.foreground1}
+content-padding    = 2
+
+; Mouse click
+; click-left = poweroff
+click-left = ~/.config/rofi/applets/menu/powermenu.sh
+
+
+[settings]
+screenchange-reload     = true
+;compositing-background = xor
+;compositing-foreground = source
+;compositing-border     = over
+;pseudo-transparency    = false
+
+[global/wm]
+margin-top    = 10
+margin-bottom = 10

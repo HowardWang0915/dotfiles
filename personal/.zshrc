@@ -116,3 +116,6 @@ zvm_after_init() {
 
 # use colored less for man pages
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
+
+# set default editor to nvim
+export EDITOR="nvim"

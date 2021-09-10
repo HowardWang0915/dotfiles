@@ -11,13 +11,15 @@ alias l='ls -l --group-dirs first'
 alias la='ls -a --group-dirs first'
 alias lla='ls -la --group-dirs first'
 alias lt='ls --tree'
-# SOURCE
+# SOURCE AND WRITE ZSHRC
+alias z='nvim ~/.zshrc'
 alias s='source ~/.zshrc'
 # FZF
 # Find a package with pacman
 function software { pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S; }
 function remove { pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns; }
-alias wifi="./scripts/wifi-fzf"
-# List all packages in the computer and remove it 
+alias wifi="~/dotfiles/scripts/scripts/wifi.sh"
 # tmux 
 alias tmux='tmux -f ~/.config/tmux/.tmux.conf'
+# rm command can be dangerous
+alias rm='echo "rm command is dangerous, use trash-put instead. Use backslash rm to bypass"; false'

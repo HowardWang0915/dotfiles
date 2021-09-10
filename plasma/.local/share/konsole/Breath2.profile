@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=Breath2
+ColorScheme=Gruvbox
 Font=Noto Mono,15,-1,0,50,0,0,0,0,0
 
 [General]

@@ -1,0 +1,7 @@
+{
+    "python.jediEnabled": false,
+    "explorer.width": 30,
+    "explorer.file.showHiddenFiles": true,
+    "explorer.file.reveal.auto": false,
+    "explorer.previewAction.onHover": false
+}

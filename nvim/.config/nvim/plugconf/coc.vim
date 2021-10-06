@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-clangd', 'coc-python', 'coc-pairs']
+let g:coc_global_extensions = ['coc-clangd', 'coc-python', 'coc-pairs', 'coc-explorer']
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim

@@ -21,21 +21,31 @@ set noswapfile          " don't use swap
 set incsearch           " show incremental when searching
 set t_Co=256
 set guifont=DroidSansMono\ Nerd\ Font\ 11 "set for displaying
+set noshowmode          " The feature is already enabled by vim airline
 
-
-" set colorscheme
+" set colorscheme, change your color scheme here
 colorscheme gruvbox
 " colorscheme nord
 " colorscheme solarized8
+
+" better color for vim
 set termguicolors
-
-
 syntax on               " open syntax
 
 " my remaps
 :tnoremap <Esc> <C-\><C-n>      " terminal exit
 nnoremap <SPACE> <NOP>          " Cause I am dumb and don't know how to get out
-
+" these are for window management
+nnoremap <Leader>w\ <C-w>v       " deal with window vertical splits
+nnoremap <Leader>w- <C-w>s       " deal with window horizontal splits
+nnoremap <Leader>wj <C-w>j       " deal with window jumping
+nnoremap <Leader>wk <C-w>k       " deal with window jumping
+nnoremap <Leader>wh <C-w>h       " deal with window jumping
+nnoremap <Leader>wl <C-w>l       " deal with window jumping
+nnoremap <Leader>wc <C-w>c       " deal with window jumping
+nnoremap <Leader>w<C-o> <C-w><C-0>       " close all window except focus
+" make saving file more easy
+nnoremap <space> :w<CR>
 
 " make vim go back to the same place
 if has("autocmd")

@@ -18,5 +18,5 @@ Plug 'Yggdroot/indentLine'                  " Show indent level of vim
 Plug 'luochen1990/rainbow'                  " beautiful brackets for eyes
 Plug 'tpope/vim-fugitive'                   " a git wrapper so good!
 Plug 'chrisbra/Colorizer'                   " color-coded hex
-
+Plug 'lervag/vimtex'                        " latex in vim!
 call plug#end()

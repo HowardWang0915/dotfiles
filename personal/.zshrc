@@ -119,3 +119,4 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 # set default editor to nvim
 export EDITOR="nvim"
+export QT_QPA_PLATFORMTHEME=gnome

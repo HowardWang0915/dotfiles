@@ -21,5 +21,3 @@ function remove { pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -r
 alias wifi="~/dotfiles/scripts/scripts/wifi.sh"
 # tmux 
 alias tmux='tmux -f ~/.config/tmux/.tmux.conf'
-# rm command can be dangerous
-alias rm='echo "rm command is dangerous, use trash-put instead. Use backslash rm to bypass"; false'

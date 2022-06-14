@@ -1,3 +1,6 @@
 *.netrwhist
 *.py[cod]
 __pycache__/
+
+tmux/.config/tmux/plugins/
+.zcompdump
